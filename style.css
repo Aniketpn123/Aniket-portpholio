@@ -211,6 +211,7 @@ border-radius: 50%;
   display:grid;
   align-items: center;
   align-content: center;
+  line-height: 30px;
 }
 .right-c2-img
 {
