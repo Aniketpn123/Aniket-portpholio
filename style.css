@@ -240,6 +240,15 @@ border-radius: 50%;
 {
   width: 40px;
 }
+.projects-list
+{
+  font-size:20px;
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  font-weight: 500;
+
+}
 .contact-form
 {
   display: flex;
