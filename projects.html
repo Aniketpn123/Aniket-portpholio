@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Projects List</h1>
+
+  <form action="">
+    <input id ="input" class="input"type="text" placeholder="add project">
+    <button class="btn"id="btn">add</button>
+
+    <p class="list"id="list"></p>
+
+
+    <a href="index.html">back to home</a>
+  </form>
+
+  <script>
+
+    let input=document.getElementById('input');
+    let list=document.querySelector('.list');
+    let btn=document.getElementById('btn');
+  
+     
+      btn.addEventListener('click',()=>{
+        let i=input.value;
+        list.innerHTML=`<li>${i}</li>`;
+        input.value='';
+
+        
+      })
+    
+  </script>
+</body>
+</html>
