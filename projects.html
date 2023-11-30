@@ -8,31 +8,48 @@
 <body>
   <h1>Projects List</h1>
 
-  <form action="">
     <input id ="input" class="input"type="text" placeholder="add project">
     <button class="btn"id="btn">add</button>
 
-    <p class="list"id="list"></p>
+    <ul class="list"id="list"></ul>
 
 
     <a href="index.html">back to home</a>
-  </form>
+ 
 
   <script>
 
-    let input=document.getElementById('input');
-    let list=document.querySelector('.list');
-    let btn=document.getElementById('btn');
-  
-     
-      btn.addEventListener('click',()=>{
-        let i=input.value;
-        list.innerHTML=`<li>${i}</li>`;
-        input.value='';
-
-        
-      })
+     let todolist=[];
+     let todos=''||localStorage.getItem('todos');
+ add()
     
+      
+    function add(){
+     
+      let input=document.querySelector('.input');
+     let list=document.querySelector('.list');
+     let btn=document.querySelector('.btn');
+     let l=list.value;
+     let i=input.value;
+     todolist.push(i);
+     console.log(todolist);
+
+     for(let i=0;i<todolist.length;i++)
+     {
+          todos= todolist[i];   
+     }
+     console.log(todos);
+
+     list.innerHTML+=`<li>${todos}</li>`;
+    
+     localStorage.setItem('todos',todos);
+     input.value='';
+ 
+     
+    }
+
+   
+
   </script>
 </body>
 </html>
