@@ -3,52 +3,118 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Resume Projects</title>
+  <style>
+     *{
+      padding: 0px;
+      margin: 0px;
+      box-sizing: border-box;
+      font-family:Arial, Helvetica, sans-serif;
+    
+     }
+   
+     .container{
+      background-color:rgba(28, 27, 27, 0.218);
+      width: 100%;
+      max-width: 500px;
+      padding: 20px;
+      display: flex;
+      flex-direction:column ;
+      margin:100px auto 10px;
+      border-radius: 10px;
+  
+     }
+     .container h1{
+      text-align: center;
+      margin-bottom: 20px;
+      color: rgb(97, 100, 100);
+      text-decoration: underline;
+      padding:10px ;
+     }
+     .container input{
+      flex:1;
+      padding: 15px;
+      border-radius: 12px;
+      border: 1px solid rgb(231, 225, 225);
+      font-size: 20px;
+      color: orange;
+      margin-bottom: 20px;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+     }
+     .container ul{
+        list-style: none;      
+        font-size: 20px;
+        color: rgb(97, 100, 100);
+        
+     }
+     button{
+        border: none;
+       
+     }
+     a{
+      text-align: end;
+      color: rgb(116, 118, 118);
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+     }
+  </style>
 </head>
 <body>
-  <h1>Projects List</h1>
-
-    <input id ="input" class="input"type="text" placeholder="add project">
-    <button class="btn"id="btn">add</button>
-
-    <ul class="list"id="list"></ul>
-
-
-    <a href="index.html">back to home</a>
- 
+       
+     <div class="container">
+        <h1>Projects List</h1>
+        <input id ="input" class="input"type="text" placeholder="Add project">
+        <ul class="list"id="list"></ul>
+        <a href="index.html">back to home</a>
+     </div>
 
   <script>
 
-     let todolist=[];
-     let todos=''||localStorage.getItem('todos');
- add()
-    
-      
-    function add(){
-     
-      let input=document.querySelector('.input');
-     let list=document.querySelector('.list');
-     let btn=document.querySelector('.btn');
-     let l=list.value;
-     let i=input.value;
-     todolist.push(i);
-     console.log(todolist);
-
-     for(let i=0;i<todolist.length;i++)
-     {
-          todos= todolist[i];   
-     }
-     console.log(todos);
-
-     list.innerHTML+=`<li>${todos}</li>`;
-    
-     localStorage.setItem('todos',todos);
-     input.value='';
- 
-     
-    }
-
    
+
+  let list=document.querySelector('.list');
+  function savelist()
+   {
+    localStorage.setItem('listitem',list.innerHTML);
+   }
+   function getitem()
+   {
+    list.innerHTML=localStorage.getItem('listitem');
+   }
+   getitem();
+
+  input.addEventListener('keydown',(e)=>{
+    if(e.key==="Enter"){
+      if(input.value==='')
+      {
+        alert('add link');
+      }
+      else{
+        render();
+        savelist();
+      }
+    }
+  })
+
+ function render()
+ {
+  let input=document.getElementById('input');
+  let li=document.createElement('li');
+  li.innerHTML=input.value;
+  list.appendChild(li);
+  let d=document.createElement('button');
+  li.appendChild(d);
+  d.innerHTML='\u00d7';
+  console.log(list);
+  input.value='';
+ }
+
+  list.addEventListener('click',(e)=>{
+  if(e.target.tagName==="BUTTON")
+  {
+    e.target.parentElement.remove();
+    savelist();
+  }  
+  }) 
 
   </script>
 </body>
